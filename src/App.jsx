@@ -1,18 +1,22 @@
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
+
 import * as Sentry from '@sentry/react';
-import SignUp from './components/SignUp';
-import WaitList from './components/WaitList';
-import FullScreenSlider from './components/FullScreenSlider';
-import Translate3DExample from './components/Translate3DExampl';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import TimelineExmp from './components/TimelineExmp';
 const App = () => {
   return (
     <main className="bg-white">
       <Navbar />
-      <FullScreenSlider />
-      {/* <Translate3DExample /> */}
-      {/* <Footer /> */}
+      <section className='h-screen bg-sky-500'></section>
+      {/* <Hero /> */}
+      {/* <Features/> */}
+      <section className='h-screen bg-red-500'></section>
+      <TimelineExmp/>
+      <section className='h-screen bg-yellow-500'></section>
+      <section className='h-screen'></section>
+      <Footer />
     </main>
   )
 }

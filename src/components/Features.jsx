@@ -19,16 +19,16 @@ const Features = () => {
       }
     })
 
-    animateWithGsap('#features_title', { y:0, opacity:1})
-    animateWithGsap(
-      '.g_grow',
-      { scale: 1, opacity: 1, ease: 'power1' },
-      { scrub: 5.5 }
-    );
-    animateWithGsap(
-      '.g_text',
-      {y:0, opacity: 1,ease: 'power2.inOut',duration: 1}
-    )
+    // animateWithGsap('#features_title', { y:0, opacity:1})
+    // animateWithGsap(
+    //   '.g_grow',
+    //   { scale: 1, opacity: 1, ease: 'power1' },
+    //   { scrub: 5.5 }
+    // );
+    // animateWithGsap(
+    //   '.g_text',
+    //   {y:0, opacity: 1,ease: 'power2.inOut',duration: 1}
+    // )
   }, []);
 
   return (

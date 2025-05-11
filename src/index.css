@@ -30,6 +30,22 @@ canvas {
   max-width: 1120px;
 }
 
+
+.img{
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+ 
+
 @layer utilities {
   .flex-center {
     @apply flex items-center justify-center;
