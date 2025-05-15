@@ -75,8 +75,8 @@ const ScrollTriggerExmp = () => {
                     zIndex: images.length - index,
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: `top+=${index * 50}px center`, // Adjust the offset for each image
-                        end: `top+=${(index + 1) * 50}px center`,
+                        start: `top+=${index * 150}px center`, // Adjust the offset for each image
+                        end: `top+=${(index + 1) * 150}px center`,
                         scrub: true,
                         markers: true, // Debug markers
                         toggleActions: "play reverse play reverse", // Animates in both directions

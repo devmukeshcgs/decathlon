@@ -12,21 +12,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-
 const App = () => {
   return (
     <main className="bg-white" id="smooth-wrapper">
       <div id="smooth-content">
         <Navbar />
-        <section className='h-screen bg-sky-500'></section>
-        <ScrollTriggerExmp />
+        <section className='h-screen bg-sky-500'>
+          <ScrollTriggerExmp />
+        </section>
         <section className='h-screen bg-green-500'></section>
         {/* <Hero /> */}
         {/* <Features/> */}
-        <section className='h-screen bg-red-500'></section>
-        <TimelineExmp />
+        <section className='h-screen bg-red-500 flex items-center justify-center'>
+          <TimelineExmp />
+        </section>
         <section className='h-screen bg-yellow-500'></section>
-        <section className='h-screen'></section>
         <Footer />
       </div>
     </main>

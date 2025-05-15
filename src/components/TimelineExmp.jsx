@@ -4,8 +4,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
 import { fetchImages } from "../services/unsplashService";
+import { GSDevTools } from "gsap/GSDevTools";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, GSDevTools)
+
 
 const TimelineExmp = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -36,110 +38,93 @@ const TimelineExmp = () => {
 
         // Set initial clip-path for all slides except the first
         slidesRef.current.forEach((slide, index) => {
-            gsap.set(slide, { scale: 0.5 });
+            // gsap.set(slide, { scale: 0.5 });
         });
     }, [images, isLoading]);
 
     useGSAP(() => {
+        // GSDevTools.create();
         const boxes = containerRef.current.querySelectorAll('.img'); // Select all .box elements
+        const boxWrapper = containerRef.current.querySelectorAll('.imgInner'); // Select all .box elements
         gsap.set(boxes[0], {
             opacity: 1,
             scale: 1,
-            rotate: 45,
+            rotate: 0,
+            transformOrigin: "center center",
         }); // Set the first box to be visible
 
-        // boxes.forEach((box, index) => {
-        //     gsap.fromTo(box,
-        //         {
-        //             zIndex: images.length - index,
-        //             opacity: 0,
-        //             scale: 0,
-        //             rotate: 45,
-        //             transformOrigin: "center center",
-        //             clipPath: "circle(0% at 50% 50%)",
-        //         }, // Initial state
-        //         {
-        //             opacity: 1,
-        //             scale: 1,
-        //             ease: "power2.inOut",
-        //             rotate: 0,
-        //             clipPath: "circle(100% at 50% 50%)",
-        //             transform: "translateZ(0)", // Force GPU acceleration
-        //             transformStyle: "preserve-3d",
-        //             perspective: 1000,
-        //             perspectiveOrigin: "50% 50%",
-        //             transformOrigin: "center center",
-        //             onComplete: () => {
-        //                 gsap.set(box, { zIndex: 0, scale: 1 }) // Reset the scale and zIndex after animation
-        //             },
-        //             zIndex: images.length - index,
-        //             scrollTrigger: {
-        //                 trigger: containerRef.current,
-        //                 start: `top+=${index * 50}px center`, // Adjust the offset for each image
-        //                 end: `top+=${(index + 1) * 50}px center`,
-        //                 scrub: true,
-        //                 markers: true, // Debug markers
-        //                 toggleActions: "play reverse play reverse", // Animates in both directions
-        //             },
-        //         }
-        //     );
-        // })
 
         // Create the timeline
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top center", // Start when the container hits the center of the viewport
-                end: `+=${boxes.length * 100}px`, // Adjust the scroll distance for the entire sequence
-                scrub: true, // Smooth scrubbing
-                markers: true, // For debugging
+                start: "top bottom",
+                end: `+=${boxes.length * 150}px`,
+                scrub: 1,
+                markers: true,
             },
         });
 
         // Loop through the boxes and add animations to the timeline
-        boxes.forEach((box, index) => {
+        boxWrapper.forEach((box, index) => {
+            if (index === 0) {
+                gsap.set(box, { zIndex: 0, scale: 1 });
+            }
+            let zIndex = images.length - index;
             timeline.fromTo(
                 box,
                 {
-                    zIndex: images.length - index,
+                    zIndex: zIndex,
                     opacity: 0,
                     scale: 0,
-                    rotate: 45,
+                    rotate: 20,
                     transformOrigin: "center center",
-                    clipPath: "circle(0% at 50% 50%)",
+                    borderRadius: "10px",
                 },
                 {
+                    zIndex: zIndex + 1,
                     opacity: 1,
                     scale: 1,
                     rotate: 0,
-                    clipPath: "circle(100% at 50% 50%)",
+                    transformOrigin: "center center",
                     ease: "power2.inOut",
-                    duration: 0.5, // Adjust the duration of each animation
+                    borderRadius: "20px",
+
+                    duration: 0.5,
                     onComplete: () => {
-                        gsap.set(box, { zIndex: 0, scale: 1 }); // Reset the scale and zIndex after animation
+                        // gsap.set(box, { zIndex: 0, scale: 1 });
+                        gsap.set(box, { zIndex: 0 });
                     },
                 },
-                index * 0.5 // Staggering effect by offsetting start time for each box
+                index * 0.5
             );
         });
-
-
     });
 
     return (
         <div ref={containerRef} className="bg-black" >
-            <div className="relative"  >
-                <div className="gsap-trigger" >
-                    {images.map((image, index) => (
-                        <div
-                            key={image.id}
-                            className="img"
-                            style={{
-                                backgroundImage: `url(${image.thumbUrl})`,
-                            }}
-                        >
-                        </div>
-                    ))}
+            <div className="relative">
+                <div className="gsap-trigger flex margin-4" >
+                    <div className="imgWrapper">
+                        {images.map((image, index) => (
+                            <div
+                                key={image.id}
+                                className="imgInner"
+                            // style={{
+                            //     backgroundColor: index === 0 ? "black" : index === 2 ? "red" : "blue",
+                            // }}
+                            >
+                                <div
+                                    ref={(el) => (slidesRef.current[index] = el)}
+                                    className="img"
+                                    style={{
+                                        backgroundImage: `url(${image.thumbUrl})`,
+                                    }}
+                                >
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
