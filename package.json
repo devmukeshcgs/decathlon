@@ -16,6 +16,7 @@
     "@react-three/fiber": "^8.15.19",
     "@sentry/react": "^7.106.0",
     "@sentry/vite-plugin": "^2.14.3",
+    "@tailwindcss/vite": "^4.1.7",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,7 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.17",
     "vite": "^5.1.4"
   }
 }

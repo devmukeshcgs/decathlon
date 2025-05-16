@@ -15,21 +15,7 @@ const ScrollTriggerExmp = () => {
     const containerRef = useRef(null);
     const slidesRef = useRef([]);
 
-    // Fetch images
-    useEffect(() => {
-        const loadImages = async () => {
-            try {
-                setIsLoading(true);
-                const fetchedImages = await fetchImages(numOfImg);
-                setImages(fetchedImages);
-            } catch (error) {
-                console.error('Error loading images:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        loadImages();
-    }, []);
+
 
     useEffect(() => {
         if (images.length === 0 || isLoading) return;

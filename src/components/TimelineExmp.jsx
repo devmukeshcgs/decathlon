@@ -4,34 +4,30 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Timeline } from "gsap/gsap-core";
 import { fetchImages } from "../services/unsplashService";
-import { GSDevTools } from "gsap/GSDevTools";
 
-gsap.registerPlugin(ScrollTrigger, GSDevTools)
+gsap.registerPlugin(ScrollTrigger,)
 
-
-const TimelineExmp = () => {
+const TimelineExmp = ({images}) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [images, setImages] = useState([]);
-    const numOfImg = 3;
-    const boxRef = useRef(null);
+     const boxRef = useRef(null);
     const containerRef = useRef(null);
     const slidesRef = useRef([]);
 
     // Fetch images
-    useEffect(() => {
-        const loadImages = async () => {
-            try {
-                setIsLoading(true);
-                const fetchedImages = await fetchImages(numOfImg);
-                setImages(fetchedImages);
-            } catch (error) {
-                console.error('Error loading images:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        loadImages();
-    }, []);
+    // useEffect(() => {
+    //     const loadImages = async () => {
+    //         try {
+    //             setIsLoading(true);
+    //             const fetchedImages = await fetchImages(numOfImg);
+    //             setImages(fetchedImages);
+    //         } catch (error) {
+    //             console.error('Error loading images:', error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+    //     loadImages();
+    // }, []);
 
     useEffect(() => {
         if (images.length === 0 || isLoading) return;
