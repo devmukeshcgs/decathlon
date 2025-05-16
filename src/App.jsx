@@ -68,16 +68,17 @@ const App = () => {
     });
     // CLIP TL
     timeline.fromTo(clipSec, {
-      clipPath: "circle(0% at 50% 50%)",
+      // clipPath: "polygon(0 0, 0 0, 0 0, 0 0)",
+       clipPath: "circle(0% at 50% 50%)",
       transformOrigin: "center center",
       ease: "power2.inOut",
     }, {
+      // clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
       clipPath: "circle(100% at 50% 50%)",
-
       duration: 1,
       transformOrigin: "center center",
       ease: "power2.inOut",
-    },"-=0.75");
+    }, "-=1");
   })
 
   return (
@@ -102,7 +103,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <div className='w-full  align-center flex justify-center flex-col items-center pin-sec'>
+          <div className='h-screen w-screen  align-center flex justify-center flex-col items-center pin-sec'>
             <div className='main-test text-3xl font-bold width-50 flex justify-center flex-row  items-center '>
               <span >CLIP</span>
               <span className='text-spacer'></span>
