@@ -11,7 +11,7 @@ const TimelineExmp = ({images}) => {
     const [isLoading, setIsLoading] = useState(true);
      const boxRef = useRef(null);
     const containerRef = useRef(null);
-    const slidesRef = useRef([]);
+    const slidesRef = useRef([]); 
 
     // Fetch images
     // useEffect(() => {
@@ -22,7 +22,7 @@ const TimelineExmp = ({images}) => {
     //             setImages(fetchedImages);
     //         } catch (error) {
     //             console.error('Error loading images:', error);
-    //         } finally {
+    //         } finally { 
     //             setIsLoading(false);
     //         }
     //     };
@@ -53,6 +53,7 @@ const TimelineExmp = ({images}) => {
         // Create the timeline
         const timeline = gsap.timeline({
             scrollTrigger: {
+                // pin: containerRef,
                 trigger: containerRef.current,
                 start: "top bottom",
                 end: `+=${boxes.length * 150}px`,

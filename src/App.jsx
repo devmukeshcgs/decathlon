@@ -2,7 +2,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 import * as Sentry from '@sentry/react';
-import Hero from './components/Hero';
 import Features from './components/Features';
 import TimelineExmp from './components/TimelineExmp';
 import ScrollTriggerExmp from './components/ScrollTriggerExmp';
@@ -20,7 +19,7 @@ const App = () => {
   const rootRef = useRef(null);
   const containerRef = useRef(null);
 
-  // Fetch images
+  // Fetch images 
   useEffect(() => {
     const loadImages = async () => {
       try {
@@ -114,7 +113,7 @@ const App = () => {
         </section>
         {/* <Features/> */}
         <section className='h-screen bg-red-500 flex items-center justify-center'></section>
-        {/* <TimelineExmp images={images} /> */}
+         <TimelineExmp images={images} /> 
         <section className='h-screen bg-yellow-500  flex items-center justify-center'></section>
         <section className='h-screen bg-green-500  flex items-center justify-center'></section>
         <section className='h-screen bg-sky-500  flex items-center justify-center'> </section>
